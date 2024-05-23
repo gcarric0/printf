@@ -6,7 +6,7 @@
 #    By: gcarrico <gcarrico@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 11:30:57 by gcarrico          #+#    #+#              #
-#    Updated: 2024/05/20 11:53:38 by gcarrico         ###   ########.fr        #
+#    Updated: 2024/05/23 09:58:10 by gcarrico         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OBJECTS)
 	@cp $(LIBFT) $(NAME)
 	@ar -rcs $(NAME) $(OBJECTS)
-	@ranlib $(NAME)
 
 $(LIBFT): $(LIBFT_DIR)
 	@$(MAKE) -C $(LIBFT_DIR)

@@ -6,13 +6,13 @@
 /*   By: gcarrico <gcarrico@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 16:48:36 by gcarrico          #+#    #+#             */
-/*   Updated: 2024/05/20 09:17:32 by gcarrico         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:10:08 by gcarrico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	count_digits(int n)
+static size_t	count_digits(int n)
 {
 	size_t	count;
 

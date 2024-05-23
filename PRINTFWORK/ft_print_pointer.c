@@ -6,13 +6,13 @@
 /*   By: gcarrico <gcarrico@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 09:31:28 by gcarrico          #+#    #+#             */
-/*   Updated: 2024/05/20 11:49:10 by gcarrico         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:12:04 by gcarrico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-static int	count_hex(unsigned long long n)
+static int	count_hex(unsigned long n)
 {
 	int	count;
 
@@ -27,34 +27,37 @@ static int	count_hex(unsigned long long n)
 	return (count);
 }
 
-static char	*puthex(unsigned long n, char *base)
+static char	*put_hex(unsigned long n, char *base)
 {
 	int		size;
-	char	*hexstr;
+	char	*hex;
 
 	size = count_hex(n);
-	hexstr = (char *)malloc(sizeof(char) * (size + 1));
-	if (!hexstr)
+	hex = (char *)malloc(sizeof(char) * (size + 1));
+	if (!hex)
 		return (NULL);
-	hexstr[size] = '\0';
+	hex[size] = '\0';
 	while (size > 0)
 	{
-		hexstr[size - 1] = base[n % 16];
+		hex[size - 1] = base[n % 16];
 		n = n / 16;
 		size--;
 	}
-	return (hexstr);
+	return (hex);
 }
 
-int	ft_print_pointer(void *nbr, char *base)
+int	ft_print_pointer(unsigned long long ptr, char *base)
 {
-	size_t			len;
-	char			*str;
-	unsigned long	n;
+	int		len;
+	char	*str;
 
-	n = (unsigned long)nbr;
-	str = puthex(n, base);
-	len = ft_printstr(str);
+	if (ptr == 0 || !ptr)
+		return (ft_printstr("(nil)"));
+	len = ft_printstr("0x");
+	str = put_hex(ptr, base);
+	if (!str)
+		return (0);
+	len += ft_printstr(str);
 	free(str);
 	return (len);
 }

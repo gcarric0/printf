@@ -6,7 +6,7 @@
 /*   By: gcarrico <gcarrico@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 12:23:18 by gcarrico          #+#    #+#             */
-/*   Updated: 2024/05/14 13:50:59 by gcarrico         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:09:45 by gcarrico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
-size_t	count_digits(int n);
 char	*ft_uitoa(unsigned int n);
 
 #endif

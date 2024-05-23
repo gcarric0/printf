@@ -6,22 +6,22 @@
 /*   By: gcarrico <gcarrico@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 12:19:42 by gcarrico          #+#    #+#             */
-/*   Updated: 2024/05/20 09:17:46 by gcarrico         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:28:52 by gcarrico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	count_digits(int n)
+static size_t	ucount_digits(unsigned int nbr)
 {
-	size_t	count;
+	int	count;
 
-	if (n == 0)
-		return (1);
 	count = 0;
-	while (n != 0)
+	if (nbr == 0)
+		return (1);
+	while (nbr != 0)
 	{
-		n = n / 10;
+		nbr = nbr / 10;
 		count++;
 	}
 	return (count);
@@ -29,27 +29,24 @@ size_t	count_digits(int n)
 
 char	*ft_uitoa(unsigned int n)
 {
-	char *str;
-	size_t ndigits;
-	unsigned nbr;
+	char	*str;
+	int		ndigits;
 
-	ndigits = count_digits(n);
-	nbr = n;
-	if (n < 0)
-	{
-		nbr *= -1;
-		ndigits++;
-	}
+	ndigits = ucount_digits(n);
 	str = (char *)malloc(sizeof(char) * (ndigits + 1));
 	if (!str)
-		return (NULL);
+		return (0);
 	str[ndigits] = '\0';
-	while (ndigits--)
+	if (n == 0)
 	{
-		str[ndigits] = nbr % 10 + '0';
-		nbr = nbr / 10;
+		str[0] = '0';
+		return (str);
 	}
-	if (n < 0)
-		str[0] = '-';
+	while (n != 0)
+	{
+		str[ndigits - 1] = n % 10 + '0';
+		n = n / 10;
+		ndigits--;
+	}
 	return (str);
 }
